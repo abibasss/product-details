@@ -45,7 +45,7 @@ class App extends Component {
   }
 
   getOne(id) {
-    axios.get(`http://localhost:8001/shoes/${id}`)
+    axios.get(`/shoes/${id}`)
     .then( shoe => {
       shoe = shoe.data;
       this.getLooks(id);
@@ -64,7 +64,7 @@ class App extends Component {
   }
 
   getLooks(id) {
-    axios.get(`http://localhost:8001/looks/${id}`)
+    axios.get(`/looks/${id}`)
     .then( looks => {
       looks = looks.data;
       this.setState({ looks });
@@ -75,7 +75,7 @@ class App extends Component {
   }
 
   getShares(id) {
-    axios.get(`http://localhost:8001/shares/${id}`)
+    axios.get(`/shares/${id}`)
     .then( shares => {
       shares = shares.data;
       this.setState({ shares });

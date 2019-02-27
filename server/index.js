@@ -1,17 +1,13 @@
 const express = require('express');
-const mysql = require('mysql');
 const cors = require('cors');
+const compression = require('compression');
 const app = express();
 const { db , Shoes, Looks, Shares } = require('../database');
 
-app.use(express.static(__dirname + '/../public'));
 app.use(cors({
   'origin': '*',
 }));
-
-let randomId = () => {
-  return Math.floor(Math.random() * (101));
-}
+app.use(compression());
 
 let randomImg = () => {
   var arr = [];
@@ -29,8 +25,13 @@ db.authenticate()
     console.error('Connection failed: ', err);
   })
 
+app.get('*.gz', function (req, res, next) {
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
+
 app.get('/shoes', (req,res) => {
-  let arr = randomImg()
+  let arr = randomImg();
   Shoes.sync()
     .then(() => {
       return Shoes.findAll({where : {id : [arr]}});
@@ -84,6 +85,8 @@ app.get('/shares/:id', (req,res) => {
     console.log('err', err)
   })
 })
+
+app.use(express.static(__dirname + '/../public'));
 
 const PORT = 8001;
 
