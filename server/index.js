@@ -1,14 +1,15 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
+const compression = require('compression');
 const app = express();
 const dbPw = process.env.DB_PW || require('../config.js').pw;
 const { db , Shoes, Looks, Shares } = require('../database');
 
-app.use(express.static(__dirname + '/../public'));
 app.use(cors({
   'origin': '*',
 }));
+app.use(compression());
 
 let randomId = () => {
   return Math.floor(Math.random() * (101));
@@ -46,7 +47,13 @@ connection.connect(err => {
   console.log('connected!')
 })
 
+app.get('*.gz', function (req, res, next) {
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
+
 app.get('/shoes', (req,res) => {
+  // res.set('Content-Encoding', 'gzip')
   let arr = randomImg().join();
   let query = `SELECT * FROM shoes WHERE id IN (${arr})`;
   connection.query(query, (err, results) => {
@@ -132,6 +139,8 @@ app.get('/shares/:id', (req,res) => {
   //   console.log('err', err)
   // })
 })
+
+app.use(express.static(__dirname + '/../public'));
 
 const PORT = 8001;
 

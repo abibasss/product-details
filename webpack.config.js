@@ -1,5 +1,6 @@
 const path = require('path');
-
+const CompressionPlugin = require('compression-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/public');
 
@@ -43,4 +44,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  plugins: [
+    new CompressionPlugin()
+  ],
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  }
 };
