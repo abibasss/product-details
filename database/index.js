@@ -2,8 +2,8 @@ const Sequelize = require('sequelize');
 const dbUser = process.env.DB_USER || require('../config.js').user;
 const dbPw = process.env.DB_PW || require('../config.js').pw;
 
-const db = new Sequelize('adidas', 'kelly', dbPw, {
-  host: '35.230.26.130',
+const db = new Sequelize('adidas', dbUser, dbPw, {
+  host: 'localhost',
   dialect: 'mysql',
   define: {
     timestamps: false,

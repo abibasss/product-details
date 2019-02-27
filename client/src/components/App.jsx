@@ -47,7 +47,7 @@ class App extends Component {
   getOne(id) {
     axios.get(`/shoes/${id}`)
     .then( shoe => {
-      shoe = shoe.data[0];
+      shoe = shoe.data;
       this.getLooks(id);
       this.getShares(id);
       this.getAll();
@@ -66,7 +66,7 @@ class App extends Component {
   getLooks(id) {
     axios.get(`/looks/${id}`)
     .then( looks => {
-      looks = looks.data[0];
+      looks = looks.data;
       this.setState({ looks });
     })
     .catch( err => {
@@ -77,7 +77,7 @@ class App extends Component {
   getShares(id) {
     axios.get(`/shares/${id}`)
     .then( shares => {
-      shares = shares.data[0];
+      shares = shares.data;
       this.setState({ shares });
     })
     .catch( err => {
