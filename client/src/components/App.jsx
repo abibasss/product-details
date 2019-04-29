@@ -30,7 +30,7 @@ class App extends Component {
 
   componentDidMount() {
     const id = Math.floor(Math.random() * (101));
-    this.getOne(11);
+    this.getOne(id);
   }
 
   getAll() {

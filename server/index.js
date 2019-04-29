@@ -34,9 +34,10 @@ app.get('/shoes', (req,res) => {
   let arr = randomImg();
   Shoes.sync()
     .then(() => {
-      return Shoes.findAll({where : {id : [arr]}});
+      return Shoes.findAll({where : {id : arr}});
     })
     .then(shoes => {
+      console.log('shoes', shoes.length)
       res.json(shoes);
     })
     .catch(err => {
