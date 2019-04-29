@@ -12,24 +12,19 @@ Abibas is a recreation of Adidas that designs and manufactures shoes, clothing, 
 ## Table of Contents
 
 1. [Demo](#demo)
-<<<<<<< HEAD
 2. [Requirements](#requirements)
 3. [Development](#development)
-=======
-2. [Usage](#usage)
-3. [Requirements](#requirements)
-4. [Development](#development)
 
 ## Demo
 > Complete the Look
 
 ![look-demo](https://user-images.githubusercontent.com/26655855/53500900-0bc14e00-3a60-11e9-8783-96105ac5ccab.gif)
 
-> Product Details 
+> Product Details
 
 ![details-demo](https://user-images.githubusercontent.com/26655855/53501310-c7827d80-3a60-11e9-9723-289d7e932356.gif)
 
-> You May Also Like 
+> You May Also Like
 
 ![shoes-demo](https://user-images.githubusercontent.com/26655855/53500336-f8fa4980-3a5e-11e9-8855-bfd5d1d82eb8.gif)
 
